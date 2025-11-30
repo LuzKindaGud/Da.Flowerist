@@ -1,56 +1,116 @@
 import React from 'react';
 import './pages-style/introduce.css';
-import flowershopImg from '../../assets/image/flowershop.jpg';
-import tulipImg from '../../assets/image/tulip.png';
+import flowerShopImg from '../../assets/image/flowershop.jpg'; 
+import tulipImg from '../../assets/image/tulip.png'; 
 
 const Introduce = () => {
   return (
     <section className="introduce-section">
-      {/* Hàng 1: Text trái, Ảnh phải */}
-      <div className="introduce-row row-1">
-        <div className="introduce-content">
-          <h2 className="introduce-title">Who are we?</h2>
-          <p className="introduce-text">
-            We are a fresh flower shop with a passion for bringing the beauty of nature into your life. Here, each flower is not just a gift, but also a story, an emotion that we cherish and convey.
-          </p>
+      <div className="introduce-row">
+        <div className="introduce-col image-col">
+          <div className="image-wrapper">
+            <img 
+              src={flowerShopImg} 
+              alt="Không gian Da Flowerist" 
+              className="introduce-img" 
+            />
+            <div className="img-border"></div>
+          </div>
         </div>
-        <div className="introduce-image">
-          <img src={flowershopImg} alt="Our flower shop" />
-        </div>
-      </div>
 
-      {/* Hàng 2: Ảnh trái, Text phải */}
-      <div className="introduce-row row-2">
-        <div className="introduce-image">
-          <img src={tulipImg} alt="Fresh flowers" />
-        </div>
-        <div className="introduce-content">
-          <h2 className="introduce-title">What we do</h2>
-          <p className="introduce-text">
-            Chúng tôi chuyên cung cấp các loại hoa tươi được nhập khẩu và chọn lọc kỹ lưỡng. 
-            Từ những bó hoa đơn giản đến những thiết kế phức tạp cho sự kiện lớn, chúng tôi cam kết 
-            mang đến chất lượng tốt nhất và dịch vụ tận tâm cho mọi khách hàng.
+        <div className="introduce-col content-col">
+          <h4 className="introduce-subtitle">Who am we ?</h4>
+          <h2 className="introduce-title">
+            Bringing Natural Beauty <br /> Into Your Life
+          </h2>
+          <p className="introduce-description">
+            At <strong>Da.Flowerist</strong>, every flower tells a story. 
+We don't just sell flowers, we deliver emotions. With a passion for the art of flower arrangement and meticulous attention to detail, we are committed to bringing the freshest, most unique products to your space.
           </p>
-        </div>
-        <div className="introduce-image">
-          <img src={tulipImg} alt="Fresh flowers" />
-        </div>
-      </div>
+          
+          <div className="introduce-stats">
+            <div className="stat-item">
+              <span className="stat-number">5+</span>
+              <span className="stat-label">Years of Experience</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">100%</span>
+              <span className="stat-label">Fresh Flowers Daily</span>
+            </div>
+          </div>
 
-      {/* Hàng 3: Text trái, Ảnh phải */}
-      <div className="introduce-row row-3">
-        <div className="introduce-content">
-          <h2 className="introduce-title">How we do it</h2>
-          <p className="introduce-text">
-            Với quy trình làm việc chuyên nghiệp, chúng tôi đảm bảo mỗi bó hoa được chăm sóc tỉ mỉ 
-            từ khâu chọn lựa nguyên liệu đến thiết kế và giao hàng. Đội ngũ nhân viên giàu kinh nghiệm 
-            luôn sẵn sàng tư vấn và hỗ trợ bạn tạo nên những món quà hoàn hảo.
-          </p>
-        </div>
-        <div className="introduce-image">
-          <img src={flowershopImg} alt="Our process" />
+          <button className="introduce-btn">View Our Story</button>
         </div>
       </div>
+      
+      {/* --- HÀNG 2: TEXT TRÁI - ẢNH PHẢI (Áp dụng reverse-layout) --- */}
+      <div className="introduce-row reverse-layout">
+        {/* LƯU Ý: Thứ tự các cột vẫn là Image -> Content trong HTML */}
+        <div className="introduce-col image-col">
+          <div className="image-wrapper">
+            <img 
+              src={tulipImg} 
+              alt="Nghệ thuật cắm hoa" 
+              className="introduce-img" 
+            />
+            <div className="img-border border-right"></div>
+          </div>
+        </div>
+        
+        <div className="introduce-col content-col">
+          <h4 className="introduce-subtitle">Art & Passion</h4>
+          <h2 className="introduce-title">
+            Custom Flower Designs <br /> Just For You
+          </h2>
+          <p className="introduce-description">
+            We believe every customer has a unique aesthetic. 
+            The Florist team at <strong>Da.Flowerist</strong> always listens to create 
+            bouquets that reflect your personal style. From classic 
+            to modern styles, we can meet all your needs.
+          </p>
+          
+          <ul className="introduce-features">
+            <li><span className="check-icon">✓</span> Custom Designs</li>
+            <li><span className="check-icon">✓</span> 2-Hour Express Delivery</li>
+            <li><span className="check-icon">✓</span> 3-Day Freshness Guarantee</li>
+          </ul>
+
+          <button className="introduce-btn btn-outline">View Our Collection</button>
+        </div>
+      </div>
+      
+      {/* --- HÀNG 3: ẢNH TRÁI - TEXT PHẢI (Mặc định) --- */}
+      <div className="introduce-row">
+        <div className="introduce-col image-col">
+          <div className="image-wrapper">
+            <img 
+              src={flowerShopImg} 
+              alt="Hàng 3" 
+              className="introduce-img" 
+            />
+            <div className="img-border"></div>
+          </div>
+        </div>
+
+        <div className="introduce-col content-col">
+          <h4 className="introduce-subtitle">Commitment</h4>
+          <h2 className="introduce-title">
+            Fresh Quality <br /> and Dedicated Service
+          </h2>
+          <p className="introduce-description">
+            We take pride in our strict flower selection process, ensuring that every bloom reaching you retains its freshness and natural fragrance. Customer satisfaction is our top priority.
+          </p>
+          
+          <ul className="introduce-features">
+            <li><span className="check-icon">✓</span> 24/7 Free Consultation</li>
+            <li><span className="check-icon">✓</span> Best Value Guarantee</li>
+            <li><span className="check-icon">✓</span> Luxury Gift Wrapping</li>
+          </ul>
+
+          <button className="introduce-btn">Contact Us</button>
+        </div>
+      </div>
+      
     </section>
   );
 };
