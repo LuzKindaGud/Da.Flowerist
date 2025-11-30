@@ -1,0 +1,282 @@
+/* import Google Font (ví dụ Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+
+:root {
+  --df-navbar-height: 64px; /* điều chỉnh nếu cần */
+}
+
+.df-navbar {
+  position: fixed;
+  top: 20px; /* khoảng cách từ mép trên */
+  left: 0;
+  right: 0;
+  margin: 0 auto; /* căn giữa ngang */
+  width: min(1200px, calc(100% - 40px)); /* chiều rộng tối đa và khoảng cách 20px 2 bên */
+  height: var(--df-navbar-height);
+
+  /* nền chính (mềm, bán trong suốt) kết hợp gradient */
+  background: linear-gradient(
+      90deg,
+      rgba(248, 225, 208, 0.068) 0%,
+      rgba(242, 214, 230, 0.204) 50%,
+      rgba(249, 231, 217, 0.308) 100%
+    );
+  border-radius: 12px;
+  
+
+  /* glass / frosted effect */
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  backdrop-filter: blur(6px) saturate(120%);
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 6px 20px rgba(12,12,12,0.08), inset 0 -1px 0 rgba(0,0,0,0.06);
+  z-index: 1000;
+  overflow: visible; /* để pseudo-element hiển thị */
+  position: fixed;
+}
+
+/* overlay hạt/đục nhẹ để tạo cảm giác "đục đục" */
+.df-navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+
+  /* kết hợp 2 lớp noise nhẹ và vignette */
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(255,255,255,0.02) 0%, transparent 30%),
+    radial-gradient(circle at 80% 90%, rgba(0,0,0,0.02) 0%, transparent 40%),
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0 1px, transparent 1px 6px);
+  mix-blend-mode: overlay;
+  opacity: 0.95;
+  transform: translateZ(0);
+}
+
+/* nhẹ vignette bên ngoài */
+.df-navbar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.04) 100%);
+}
+
+/* Nội dung bên trong luôn nằm trên overlay */
+.df-nav-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px; /* bỏ padding trên/dưới để căn giữa theo height */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Đẩy nội dung trang xuống để không bị navbar che */
+body {
+  padding-top: calc(var(--df-navbar-height) + 20px);
+}
+
+/* Brand (left) */
+.df-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.df-star {
+  font-size: 20px;
+  color: #0b0b0b;
+  transform: translateY(-1px);
+  line-height: 1;
+}
+.df-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 1px;
+  color: #0b0b0b;
+  font-size: 20px;
+  position: relative; /* needed for shine pseudo */
+  display: inline-block;
+  overflow: hidden;
+}
+
+/* holo / sheen effect for brand name */
+.df-name::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -70%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-20deg) translateX(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 700ms ease, opacity 300ms ease;
+  mix-blend-mode: overlay;
+}
+.df-name:hover::after {
+  transform: skewX(-20deg) translateX(260%);
+  opacity: 1;
+}
+
+/* small sheen for nav links on hover (complements existing background) */
+.df-link {
+  position: relative;
+  overflow: visible;
+}
+.df-link::after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  left: -50%;
+  width: 40%;
+  height: 76%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-15deg) translateX(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 520ms ease, opacity 240ms ease;
+  mix-blend-mode: overlay;
+}
+.df-link:hover::after { transform: skewX(-15deg) translateX(260%); opacity: 1; }
+
+/* Center navigation */
+.df-nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  max-width: 560px;
+}
+
+.df-link {
+  text-decoration: none;
+  color: #7a6f66;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 6px; /* giữ nhẹ để chuyển về 5px khi hover */
+  transition: color .15s ease, background-color .15s ease, transform .08s ease, border-radius .12s ease;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+.df-link:hover {
+  color: #242121; /* màu chữ khi hover */
+  border-radius: 14px;
+  transform: translateY(-1px);
+}
+
+/* Active link pill */
+.df-active {
+  background: #4a3b33;
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+/* Right action */
+.df-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.df-btn {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: linear-gradient(180deg,#0f0f0f 0%, #1e1e1e 100%);
+  color: #fff;
+  border: 0;
+  padding: 10px 18px;
+  border-radius: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(12,12,12,0.20), inset 0 -2px 0 rgba(255,255,255,0.04);
+  transition: transform .18s cubic-bezier(.2,.9,.2,1), box-shadow .18s ease, background .18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* glossy sheen that sweeps across the button */
+.df-btn::before {
+  content: "";
+  position: absolute;
+  left: -70%;
+  top: -30%;
+  width: 50%;
+  height: 160%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg) translateX(0);
+  opacity: 0;
+  transition: transform 650ms cubic-bezier(.2,.9,.2,1), opacity 300ms ease;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 2;
+}
+
+/* subtle colored halo/glow on hover */
+.df-btn::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  background: radial-gradient(60% 60% at 50% 30%, rgba(255,140,90,0.12), rgba(77,46,40,0));
+  opacity: 0;
+  transition: opacity .18s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.df-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(10,10,10,0.32);
+  background: linear-gradient(180deg,#171717 0%, #2b2b2b 100%);
+}
+.df-btn:hover::before {
+  transform: skewX(-25deg) translateX(240%);
+  opacity: 1;
+}
+.df-btn:hover::after {
+  opacity: 1;
+}
+
+/* keyboard accessible focus style */
+.df-btn:focus-visible {
+  outline: 3px solid rgba(255,200,170,0.18);
+  outline-offset: 4px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 880px) {
+  .df-nav-links { display: none; }
+  .df-nav-inner { justify-content: space-between; }
+}
+
+/* Logo image inside brand */
+.df-logo {
+  width: 60px; /* adjust as needed */
+  height: 60px;
+  display: inline-block;
+  vertical-align: middle;
+  object-fit: cover; /* crop nicely */
+  border-radius: 8px;
+  margin-right: 2px;
+}
+
+@media (max-width: 560px) {
+  .df-logo { width: 32px; height: 32px; margin-right: 8px; }
+  .df-name { font-size: 16px; }
+}

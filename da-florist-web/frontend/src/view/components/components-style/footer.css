@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+.df-footer {
+  background: #fff;
+  color: #33403d;
+  font-family: 'Poppins', system-ui, Arial, sans-serif;
+  border-top: 1px solid rgba(18,18,18,0.04);
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.df-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* brand column */
+.df-footer-brand {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  min-width: 220px;
+}
+.df-footer-logo {
+  width: 88px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+.df-footer-copy {
+  font-size: 13px;
+  color: #8a8f8d;
+  line-height: 1.4;
+}
+.df-footer-legal a {
+  color: #9aa19f;
+  text-decoration: none;
+  margin-left: 6px;
+  font-size: 13px;
+}
+.df-footer-legal a:hover { color: #56605d; }
+
+/* columns grid */
+.df-footer-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  flex: 1 1 auto;
+  align-items: start;
+}
+
+/* each column */
+.df-col h4 {
+  margin: 0 0 12px 0;
+  font-size: 15px;
+  color: #1f2322;
+  font-weight: 600;
+}
+.df-col a {
+  display: block;
+  color: #8a8f8d;
+  text-decoration: none;
+  margin: 8px 0;
+  font-size: 14px;
+  transition: color .15s ease, transform .12s ease;
+}
+.df-col a:hover {
+  color: #25312f;
+  transform: translateX(3px);
+}
+
+/* contact column specifics */
+.df-col-contact .df-contact-note {
+  color: #8a8f8d;
+  font-size: 14px;
+  margin: 0 0 12px 0;
+  max-width: 220px;
+}
+
+/* social icons */
+.df-socials {
+  display: flex;
+  gap: 20px; /* equal spacing between icons */
+  margin-top: 6px;
+  align-items: center;
+}
+
+/* anchors inside .df-socials: make each a fixed square so icons align exactly */
+.df-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;   /* square button area */
+  height: 48px;  /* same height for all */
+  text-decoration: none;
+  color: inherit;
+  transition: transform .14s ease, color .14s ease;
+}
+
+.df-socials a:hover { transform: translateY(-3px); color: #25312f; }
+
+/* normalize icon size: all icons use the same dimensions */
+.df-icon,
+.df-socials svg { width: 24px; height: 24px; display: block; }
+
+/* helper to enlarge if needed, but keep consistent sizing */
+.df-icon--large { width: 28px; height: 28px; }
+
+/* responsive */
+@media (max-width: 980px) {
+  .df-footer-inner { flex-direction: column; gap: 24px; align-items: stretch; }
+  .df-footer-brand { align-items: flex-start; }
+  .df-footer-columns { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .df-footer-logo { width: 72px; }
+}
+
+@media (max-width: 560px) {
+  .df-footer-columns { grid-template-columns: 1fr; }
+  .df-footer-copy { font-size: 12px; }
+  .df-footer-logo { width: 64px; }
+  .df-footer { padding: 28px 16px; }
+}

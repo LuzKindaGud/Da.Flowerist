@@ -1,0 +1,210 @@
+/* Center page container with flexbox so .product-section is centered */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;    /* center vertically */
+  justify-content: center;/* center horizontally */
+  overflow: auto;         /* allow scroll if content larger than viewport */
+  background: #faf7f7;
+}
+
+/* Styles for product slider page */
+:root{
+  --accent:#5a2b28;
+  --muted:#e9e9e9;
+  --card-bg:#ececec;
+  --text:#111;
+  --max-width:1280px;
+}
+
+.product-section{
+  /* max-width: var(--max-width); */
+  width: 99vw;
+  height: 110vh;
+  margin: 0 0 0 0;
+  padding: 0 24px;
+  box-sizing: border-box;
+  background-color: #faf7f7;
+  
+}
+
+.product-section .header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  padding-top: 80px;
+  margin-bottom:10px;
+}
+
+.product-section .header h2{
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size:44px;
+  margin:0;
+  color:var(--text);
+}
+
+.product-section .header a.read-more{
+  color:var(--accent);
+  text-decoration:underline;
+  font-size:14px;
+  align-self:center;
+  margin-left:auto;
+}
+
+/* grid */
+.product-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:28px;
+  padding-top: 40px;
+}
+
+/* card */
+.product-card{
+  background:transparent;
+  width: 100%;
+  max-width: 380px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  color:var(--text);
+}
+
+
+/* image area */
+.card-media{
+  background-size: cover;
+  background:var(--muted);
+  border-radius:12px;
+  position:relative;
+  min-height:360px;
+  width: 100%;
+  display: flex ;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.02) inset;
+}
+
+/* badge */
+.card-badge{
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: rgba(255,255,255,0.9);
+  color: var(--accent);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  z-index: 2;
+}
+
+/* image */
+.card-media img{
+  /* make the image fill the whole card-media area */
+  position:absolute;
+  inset:0; /* top:0; right:0; bottom:0; left:0 */
+  width:100%;
+  height:100%;
+  object-fit:cover; /* cover ensures the image fills and crops as needed */
+  display:block;
+  pointer-events:none;
+}
+
+/* dots under image */
+.card-dots{
+  position:absolute;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+  align-items:center;
+  justify-content:center;
+}
+
+.card-dots button{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  border:none;
+  background:#cf751b;
+  padding:0;
+  cursor:pointer;
+  transition:all .18s ease;
+}
+
+.card-dots button.active{
+  width:10px;
+  height:10px;
+  background:#382617;
+  box-shadow:0 1px 0 rgba(0,0,0,.15);
+}
+
+/* product info */
+.card-title{
+  font-weight:700;
+  font-size:16px;
+  margin:0 6px;
+}
+
+.card-desc{
+  color:#333;
+  font-size:14px;
+  margin:0 6px;
+  line-height:1.35;
+  min-height:40px;
+}
+
+.card-price{
+  margin:0 6px;
+  font-weight:700;
+  font-size:15px;
+}
+
+.card-oldprice{
+  color:#7b7b7b;
+  text-decoration:line-through;
+  margin-right:8px;
+  font-weight:400;
+}
+
+/* ensure each slick slide centers the card and card uses full slide width */
+.products-slider .slick-slide {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12px 6px;
+  box-sizing: border-box;
+}
+
+.slide-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* tweak dots */
+.slick-dots-wrapper { text-align:center; padding-top:8px; }
+.slick-dots li { display:inline-block; margin:0 4px; }
+.slick-dots button { width:8px; height:8px; border-radius:50%; background:#c7bfb7; border:none; transform: translateY(30px); cursor:pointer; }
+.slick-dots .slick-active button { background:#000000; }
+
+/* responsive */
+@media (max-width:1100px){
+  .product-grid{ grid-template-columns: repeat(2, 1fr); }
+  .card-media{ min-height:360px; }
+}
+
+@media (max-width:720px){
+  .product-grid{ grid-template-columns: 1fr; }
+  .product-section .header h2{ font-size:32px; }
+  .card-media{ min-height:320px; padding:20px; }
+}

@@ -1,0 +1,25 @@
+.curved-loop-jacket {
+    min-height: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #212020;
+  }
+  
+  .curved-loop-svg {
+    user-select: none;
+    width: 100%;
+    overflow: visible;
+    display: block;
+    font-size: 3.6rem;
+    fill: #a12c2c;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    transform: translateY(36%);
+  }
+  
