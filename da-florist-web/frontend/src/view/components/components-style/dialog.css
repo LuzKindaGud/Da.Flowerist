@@ -1,0 +1,171 @@
+/* Dialog Overlay - Lớp phủ mờ */
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Dialog Box - Hộp thông báo */
+.dialog-box {
+    background: linear-gradient(135deg, #fff7df 0%, #fffdf6 100%);
+    border: 2px solid rgba(212, 165, 165, 0.3);
+    border-radius: 24px;
+    padding: 40px 50px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.4s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hiệu ứng hoa trang trí góc */
+.dialog-box::before {
+    content: '🌸';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 80px;
+    opacity: 0.15;
+    transform: rotate(25deg);
+}
+
+.dialog-box::after {
+    content: '🌺';
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+    font-size: 70px;
+    opacity: 0.15;
+    transform: rotate(-15deg);
+}
+
+/* Icon thành công/lỗi */
+.dialog-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    animation: scaleIn 0.5s ease-out;
+}
+
+.dialog-icon.success {
+    background: linear-gradient(135deg, #a8d5a8 0%, #7cb97c 100%);
+    box-shadow: 0 5px 20px rgba(124, 185, 124, 0.4);
+}
+
+.dialog-icon.error {
+    background: linear-gradient(135deg, #e89b9b 0%, #d67676 100%);
+    box-shadow: 0 5px 20px rgba(214, 118, 118, 0.4);
+}
+
+/* Tiêu đề */
+.dialog-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 26px;
+    color: #5b4838;
+    margin: 0 0 15px 0;
+    font-weight: 600;
+}
+
+/* Nội dung */
+.dialog-message {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0 0 30px 0;
+}
+
+/* Nút OK */
+.dialog-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #5b4838 0%, #452f19 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(91, 72, 56, 0.3);
+}
+
+.dialog-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(91, 72, 56, 0.4);
+    background: linear-gradient(135deg, #6f593d 0%, #5b4838 100%);
+}
+
+.dialog-btn:active {
+    transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .dialog-box {
+        padding: 30px 25px;
+    }
+    
+    .dialog-title {
+        font-size: 22px;
+    }
+    
+    .dialog-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 35px;
+    }
+}

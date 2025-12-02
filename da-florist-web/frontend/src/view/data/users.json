@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "email": "admin@flowerist.com",
+    "password": "Admin123",
+    "role": "admin"
+  },
+  {
+    "id": 2,
+    "username": "user1",
+    "email": "user1@example.com",
+    "password": "User123",
+    "role": "user"
+  },
+  {
+    "id": 3,
+    "username": "testuser",
+    "email": "test@flowerist.com",
+    "password": "Test123",
+    "role": "user"
+  }
+]

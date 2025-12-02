@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './pages-style/home.css';
 import vid1 from '../../assets/video/vid1.webm';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const heroRef = useRef(null);

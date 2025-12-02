@@ -1,0 +1,279 @@
+/* src/view/pages/pages-style/auth.css */
+
+:root {
+    --primary-pink: #5b4838;
+    --dark-pink: #452f19;
+    --glass-bg: rgba(255, 255, 255, 0.75); /* Màu nền kính mờ hơn chút */
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --text-main: #4a4a4a;
+}
+
+
+/* Wrapper: Giống như 1 section bình thường, không ép full màn hình */
+/* ... */
+
+
+.auth-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-width: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 0px 0px;
+    margin: 0;
+    
+    /* Background gốc */
+    background: linear-gradient(
+        180deg,
+        #faf7f7 0%,
+        #fffdf6 28%,
+        #fff7df 60%,
+        #fff3c8 100%
+    );
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Lớp overlay kính mờ phủ lên toàn bộ wrapper */
+.auth-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 0;
+}
+
+/* ... các phần khác giữ nguyên */
+
+/* Card Login/Register: Hiệu ứng kính được nhúng trực tiếp vào đây */
+.auth-box {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 450px;
+    padding: 40px 50px;
+    
+    /* Hiệu ứng Glassmorphism (Kính mờ) */
+    background-color: var(--glass-bg); 
+    backdrop-filter: blur(10px); /* Làm mờ hậu cảnh phía sau card */
+    -webkit-backdrop-filter: blur(10px); /* Hỗ trợ Safari */
+    
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ tạo độ nổi */
+    
+    text-align: center;
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Các phần còn lại giữ nguyên style đẹp cũ */
+.auth-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 32px;
+    color: var(--dark-pink);
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.auth-subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Password Input Wrapper */
+.password-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #fff; /* Viền trắng hòa vào nền kính */
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #452f19;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box; 
+}
+
+.password-input-wrapper .form-input {
+    padding-right: 45px; /* Space for toggle button */
+}
+
+.form-input:focus {
+    border-color: var(--primary-pink);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(212, 165, 165, 0.2);
+}
+
+/* Password Toggle Button */
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7a6f66;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+}
+
+.password-toggle:hover {
+    color: var(--primary-pink);
+    background: rgba(91, 72, 56, 0.08);
+}
+
+.password-toggle:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.password-toggle svg {
+    display: block;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background: var(--dark-pink);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.auth-btn:hover {
+    background: #6f593d;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(181, 111, 111, 0.3);
+}
+
+.auth-footer {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #555;
+}
+
+.auth-link {
+    color: var(--dark-pink);
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+    color: var(--primary-pink);
+}
+
+
+.error-message {
+    background-color: #fce4e4; 
+    color: #c0392b; 
+    padding: 10px 15px;
+    border: 1px solid #c0392b;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .auth-wrapper {
+        padding: 80px 15px; /* Giảm padding trên mobile */
+    }
+    .auth-box {
+        padding: 30px 20px;
+    }
+}
+
+
+/* Field-level error messages */
+.field-error {
+    color: #c0392b;
+    font-size: 13px;
+    margin: 6px 0 0 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    animation: slideDown 0.3s ease-out;
+}
+
+.field-error::before {
+    content: '⚠';
+    font-size: 14px;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Input error state */
+.form-input.input-error {
+    border-color: #c0392b;
+    background: rgba(252, 228, 228, 0.5);
+}
+
+.form-input.input-error:focus {
+    border-color: #c0392b;
+    box-shadow: 0 0 0 4px rgba(192, 57, 43, 0.15);
+}
+
+/* Success state (optional for future use) */
+.form-input.input-success {
+    border-color: #27ae60;
+    background: rgba(232, 245, 233, 0.5);
+}
+
+.form-input.input-success:focus {
+    border-color: #27ae60;
+    box-shadow: 0 0 0 4px rgba(39, 174, 96, 0.15);
+}

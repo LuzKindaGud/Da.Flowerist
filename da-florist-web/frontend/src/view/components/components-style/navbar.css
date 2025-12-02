@@ -280,3 +280,213 @@ body {
   .df-logo { width: 32px; height: 32px; margin-right: 8px; }
   .df-name { font-size: 16px; }
 }
+
+
+/* ========== PROFILE DROPDOWN STYLES ========== */
+
+.profile-container {
+  position: relative;
+}
+
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 250, 245, 0.85) 100%);
+  border: 1.5px solid rgba(91, 72, 56, 0.15);
+  padding: 8px 16px 8px 8px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.profile-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  border-color: rgba(91, 72, 56, 0.25);
+}
+
+.profile-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5b4838 0%, #7a6f66 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(91, 72, 56, 0.3);
+}
+
+.profile-email {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5b4838;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown-arrow {
+  color: #7a6f66;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 280px;
+  background: linear-gradient(135deg, #fffdf6 0%, #fff7df 100%);
+  border: 2px solid rgba(91, 72, 56, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+  animation: dropdownSlide 0.3s ease-out;
+  z-index: 1001;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dropdown Header */
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.dropdown-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5b4838 0%, #7a6f66 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  box-shadow: 0 4px 12px rgba(91, 72, 56, 0.3);
+  flex-shrink: 0;
+}
+
+.dropdown-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.dropdown-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #5b4838;
+  margin: 0 0 4px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown-email {
+  font-size: 13px;
+  color: #7a6f66;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Divider */
+.dropdown-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(91, 72, 56, 0.2), transparent);
+  margin: 8px 0;
+}
+
+/* Dropdown Items */
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #5b4838;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-item:hover {
+  background: rgba(91, 72, 56, 0.08);
+  transform: translateX(4px);
+  width: calc(100% - 50px);
+  color: #90450f;
+}
+
+.dropdown-item svg {
+  color: #7a6f66;
+  flex-shrink: 0;
+}
+
+.dropdown-item.signout {
+  color: #c0392b;
+  margin-top: 4px;
+}
+
+.dropdown-item.signout:hover {
+  background: rgba(192, 57, 43, 0.1);
+}
+
+.dropdown-item.signout svg {
+  color: #c0392b;
+}
+
+/* Responsive */
+@media (max-width: 880px) {
+  .profile-email {
+    display: none;
+  }
+  
+  .profile-btn {
+    padding: 8px;
+  }
+  
+  .profile-dropdown {
+    width: 260px;
+  }
+}
+
+@media (max-width: 560px) {
+  .profile-dropdown {
+    right: -20px;
+    width: calc(100vw - 40px);
+    max-width: 320px;
+  }
+}

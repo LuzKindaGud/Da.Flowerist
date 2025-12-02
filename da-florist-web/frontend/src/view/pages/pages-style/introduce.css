@@ -187,44 +187,61 @@
 
 /* --- Responsive (Mobile & Tablet) --- */
 @media (max-width: 992px) {
-    /* Đảm bảo tất cả các hàng xếp dọc */
-    .introduce-row, .introduce-row.reverse-layout {
-        flex-direction: column; 
-        margin-bottom: 80px;
-        gap: 40px;
-    }
-    
-    /* Đảm bảo Ảnh luôn nằm trên Text trên mobile (do HTML là Image -> Content) */
+    /* 1. Đảm bảo tất cả các hàng xếp dọc và có khoảng cách hợp lý */
+    .introduce-row, 
     .introduce-row.reverse-layout {
-        flex-direction: column; /* Đảm bảo Image -> Content */
+        /* Thiết lập cột cho cả hai loại layout trên màn hình nhỏ */
+        flex-direction: column; 
+        margin-bottom: 60px; /* Khoảng cách giữa các hàng */
+        gap: 30px;
+        align-items: center; /* Căn giữa các cột */
     }
 
-    .image-col {
-        width: 100%;
-        max-width: 500px;
+    .introduce-row:last-child {
+        margin-bottom: 0;
+    }
+
+    /* 2. Điều chỉnh cột và hình ảnh */
+    .introduce-col {
+        width: 100%; /* Đảm bảo cột chiếm toàn bộ chiều rộng */
+    }
+
+    .image-wrapper {
+        padding: 0; /* Xóa padding thừa trên mobile */
     }
 
     .img-border {
-        display: none; 
+        display: none; /* Ẩn khung viền trang trí để làm gọn giao diện mobile */
     }
 
+    /* 3. Căn giữa nội dung văn bản cho gọn */
     .introduce-content {
         text-align: center;
+        padding: 0 15px; /* Thêm padding ngang để nội dung không dính sát mép */
     }
 
     .introduce-description {
-        text-align: center;
+        text-align: center; /* Text mô tả được căn giữa */
     }
 
-    .introduce-stats, .introduce-features {
+    /* 4. Căn giữa các khối con (stats và features) */
+    .introduce-stats {
         justify-content: center;
-        display: flex;
-        flex-direction: column; 
-        align-items: center;
+        width: auto; /* Điều chỉnh width cho phù hợp với nội dung căn giữa */
+        padding-top: 15px; /* Giảm nhẹ padding trên */
+    }
+    
+    .introduce-features {
+        /* Bỏ căn trái mặc định và căn giữa các mục */
+        align-items: center; 
+        padding-left: 0;
     }
     
     .introduce-features li {
-        width: 100%;
-        justify-content: center;
+        justify-content: center; /* Căn giữa từng mục list */
+    }
+    
+    .introduce-title {
+        font-size: 30px; /* Giảm kích thước tiêu đề */
     }
 }
